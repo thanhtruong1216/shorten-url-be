@@ -8,13 +8,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+require "test_helper"
 
-one:
-  url: MyString
-  slug: MyString
-  clicked: 1
-
-two:
-  url: MyString
-  slug: MyString
-  clicked: 1
+class LinkTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end
