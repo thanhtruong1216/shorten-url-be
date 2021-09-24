@@ -15,7 +15,10 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -32,7 +35,6 @@ group :test do
   gem 'json-schema'
   gem 'pry'
   gem 'rails-controller-testing'
-  gem 'rspec-rails'
   gem 'rubocop-faker'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
