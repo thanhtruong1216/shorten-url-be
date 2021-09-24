@@ -27,9 +27,15 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'json-schema'
+  gem 'pry'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'rubocop-faker'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

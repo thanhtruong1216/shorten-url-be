@@ -13,9 +13,9 @@
 class Link < ApplicationRecord
   before_save :set_slug
 
-  validates_presence_of :url
+  validates :url, presence: true
   validates :url, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
-  validates_uniqueness_of :slug
+  validates :slug, uniqueness: true, length: { maximum: 5 }
 
   private
 
