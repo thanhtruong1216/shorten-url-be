@@ -1,24 +1,17 @@
-# README
+# <img src='app/assets/images/studiovinari-brands.svg?raw=true' width="50" height="50"/> Shorten Url Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Clone project:
 
-Things you may want to cover:
+```
+$ git clone git@github.com:thanhtruong1216/shorten-url-be.git
+```
 
-* Ruby version
+## The type of commit messages
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- feat: a new feature
+- fix: a bug fix
+- docs: changes to documentation
+- style: formatting, missing semi colons, etc; no code change
+- refactor: refactoring production code
+- test: adding tests, refactoring test; no production code change
+- chore: updating build tasks, package manager configs, etc; no production code change
