@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Link < ApplicationRecord
-  before_save :set_slug
+  before_create :set_slug
 
   validates :url, presence: true
   validates :url, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
