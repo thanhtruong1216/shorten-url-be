@@ -15,6 +15,7 @@ class Link < ApplicationRecord
   include CustomValidators
 
   belongs_to :user
+  has_many :clicks
 
   before_create :set_slug
 

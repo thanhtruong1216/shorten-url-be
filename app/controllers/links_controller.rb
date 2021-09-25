@@ -2,16 +2,16 @@
 
 class LinksController < ApplicationController
   def index
-    shorten_urls = []
+    links = []
     links_with_ordered = Link.all.order('created_at DESC')
 
     links_with_ordered.each do |link|
-      data = { id: link.id, shorten_url: link.shortener }
+      data = { id: link.id, shorten_url: link.shortener, url: link.url, click_count: link.clicks.count }
 
-      shorten_urls << data
+      links << data
     end
 
-    render json: { result: shorten_urls }
+    render json: { result: links }
   end
 
   def create
