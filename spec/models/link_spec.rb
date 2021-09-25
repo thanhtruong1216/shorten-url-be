@@ -18,7 +18,6 @@ RSpec.describe Link, type: :model do
   it { is_expected.to allow_value('https://example.com/winterfall').for(:url) }
   it { is_expected.not_to allow_value('example.com/').for(:url) }
 
-  it { is_expected.to validate_uniqueness_of(:slug) }
   it { is_expected.to allow_value('uildn').for(:slug) }
-  it { is_expected.not_to allow_value('99nhkl').for(:slug) }
+  it { is_expected.not_to allow_value('99nhkl95gcx').for(:slug) }
 end
