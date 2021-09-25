@@ -15,4 +15,12 @@ class ApplicationController < ActionController::API
       render json: { errors: e.message }, status: :unauthorized
     end
   end
+
+  def current_page
+    params[:page].presence || 1
+  end
+
+  def page_size
+    params[:page_size].presence || 5
+  end
 end

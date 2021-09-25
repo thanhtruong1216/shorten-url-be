@@ -11,7 +11,13 @@ class LinksController < ApplicationController
       links << data
     end
 
-    render json: { result: links }
+    link_with_pagination = Kaminari.paginate_array(links).page(params[:page]).per(page_size)
+
+    render json: {
+      result: link_with_pagination,
+      page: current_page,
+      total: links.count
+    }
   end
 
   def create
