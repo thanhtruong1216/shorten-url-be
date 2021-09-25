@@ -66,6 +66,7 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
@@ -98,6 +99,7 @@ GEM
       activesupport (>= 5.0.0)
     json-schema (2.8.1)
       addressable (>= 2.4)
+    jwt (2.2.2)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -172,9 +174,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
     rexml (3.2.5)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
@@ -267,12 +266,14 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  bcrypt
   bootsnap (>= 1.4.4)
   database_cleaner
   factory_bot_rails
   faker
   jbuilder (~> 2.7)
   json-schema
+  jwt
   listen (~> 3.3)
   pg (~> 1.1)
   pry

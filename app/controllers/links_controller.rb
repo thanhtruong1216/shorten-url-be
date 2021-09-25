@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class LinksController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
   def index
     shorten_urls = []
     links_with_ordered = Link.all.order('created_at DESC')
@@ -34,7 +32,7 @@ class LinksController < ApplicationController
 
   def update
     link = Link.find_by(id: params[:id])
-    # binding.pry
+
     if link.update(link_params)
       render json: {
         result: link,
@@ -42,7 +40,7 @@ class LinksController < ApplicationController
       }
     else
       render json: {
-        error: 'Cannot update this url',
+        error: link.errors.full_messages,
         status: 422
       }
     end
