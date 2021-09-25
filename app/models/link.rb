@@ -17,8 +17,6 @@ class Link < ApplicationRecord
   validates :url, format: URI::DEFAULT_PARSER.make_regexp(%w[http https])
   validates :slug, uniqueness: true, length: { maximum: 5 }
 
-  private
-
   def shortener
     "http://localhost:3000/#{slug}" if Rails.env.development?
   end
