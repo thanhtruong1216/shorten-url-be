@@ -5,7 +5,7 @@ class LinksController < ApplicationController
 
   def index
     links = []
-    links_with_ordered = Link.all.order('created_at DESC')
+    links_with_ordered = current_user.links.order('created_at DESC')
 
     links_with_ordered.each do |link|
       data = {

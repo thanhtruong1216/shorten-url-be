@@ -37,16 +37,14 @@ RSpec.describe LinksController, type: :controller do
 
       context 'failed' do
         it 'returns error' do
-          invalid_url = 'www://google.com/waterfall'
-
           expect do
-            post :create, params: { link: { url: invalid_url, user_id: user.id } }
+            post :create, params: { link: { url: '//google.com/waterfall' } }
           end.to change { Link.count }.by(0)
 
           json_response = JSON.parse(response.body)
 
           expect(json_response['status']).to eq(422)
-          expect(json_response['error']).to eq(['Url is invalid'])
+          expect(json_response['errors']).to eq(['Url is invalid'])
         end
       end
     end
@@ -69,10 +67,10 @@ RSpec.describe LinksController, type: :controller do
 
     context 'failed' do
       it 'cannot update slug' do
-        put :update, params: { link: { slug: '1234asdfth' }, id: link.id }
+        put :update, params: { link: { slug: '12345678910' }, id: link.id }
 
         expect(link.slug).to eq(link.slug)
-        expect(JSON.parse(response.body)['error']).to eq(['Slug is too long (maximum is 9 characters)'])
+        expect(JSON.parse(response.body)['errors']).to eq(['Slug is too long (maximum is 9 characters)'])
         expect(JSON.parse(response.body)['status']).to eq(422)
       end
     end
