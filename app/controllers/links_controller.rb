@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
 class LinksController < ApplicationController
+  before_action :authorize_request
+
   def index
     links = []
     links_with_ordered = Link.all.order('created_at DESC')
 
     links_with_ordered.each do |link|
-      data = { id: link.id, shorten_url: link.shortener, url: link.url, click_count: link.clicks.count }
+      data = {
+        id: link.id,
+        shorten_url: link.shortener,
+        title: link.title,
+        slug: link.slug
+      }
 
       links << data
     end
@@ -15,13 +22,25 @@ class LinksController < ApplicationController
 
     render json: {
       result: link_with_pagination,
-      page: current_page,
-      total: links.count
+      page: current_page
+    }
+  end
+
+  def show
+    link = Link.find_by(id: params[:id])
+
+    render json: {
+      result: {
+        link: link,
+        short_link: link.shortener,
+        total_clicks: link.clicks.count
+      }
     }
   end
 
   def create
     shortener_link = Link.new(link_params)
+    shortener_link.user = current_user
 
     if shortener_link.save
       render json: {
@@ -54,23 +73,14 @@ class LinksController < ApplicationController
 
   def destroy
     link = Link.find_by(id: params[:id])
+    link.destroy
 
-    if link.destroy
-      render json: {
-        message: 'Url destroyed',
-        status: 200
-      }
-    else
-      render json: {
-        message: 'Cannot destroy this url',
-        status: 200
-      }
-    end
+    render json: { message: 'Url destroyed', status: 200 }
   end
 
   private
 
   def link_params
-    params.require(:link).permit(:url, :slug, :user_id)
+    params.require(:link).permit(:url, :slug, :title)
   end
 end

@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe LinksController, type: :controller do
-  describe'#GET index' do
+  describe '#GET index' do
     let(:user) { FactoryBot.create(:user) }
     let!(:link1) { FactoryBot.create(:link, user: user) }
     let!(:link2) { FactoryBot.create(:link, user: user) }
+
+    before { allow(controller).to receive(:authorize_request) }
 
     it 'returns list of links' do
       get :index
@@ -16,6 +18,11 @@ RSpec.describe LinksController, type: :controller do
 
   describe '#POST create shorten link' do
     let!(:user) { FactoryBot.create(:user) }
+
+    before do
+      allow(controller).to receive(:authorize_request)
+      allow(controller).to receive(:current_user).and_return(user)
+    end
 
     context 'success' do
       it 'create new link' do
@@ -49,6 +56,8 @@ RSpec.describe LinksController, type: :controller do
     let(:user) { FactoryBot.create(:user) }
     let(:link) { FactoryBot.create(:link, user: user) }
 
+    before { allow(controller).to receive(:authorize_request) }
+
     context 'success' do
       it 'update slug' do
         put :update, params: { link: { slug: 'winter' }, id: link.id }
@@ -70,6 +79,8 @@ RSpec.describe LinksController, type: :controller do
   end
 
   describe '#DELETE url' do
+    before { allow(controller).to receive(:authorize_request) }
+
     it 'delete an url' do
       user = FactoryBot.create(:user)
       link = FactoryBot.create(:link, user: user)
