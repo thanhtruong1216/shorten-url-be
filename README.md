@@ -1,24 +1,21 @@
 # <img src='app/assets/images/studiovinari-brands.svg?raw=true' width="50" height="50"/> Shorten Url Project
 
+Hello,
+
+Thank you for checking out my assignment. You can have a quick video demo as follow:
+
 ## Demo video
 
-[Demo](https://www.loom.com/share/6807c890ae6642158c695c0a93e235ff)
+Note: You should play at 1.5x speed
+
+[Demo 1](https://www.loom.com/share/6807c890ae6642158c695c0a93e235ff)
+[Demo 2](https://www.loom.com/share/682a3a5c92de4f368f3ad0e115bb40e3)
 
 ## Clone project:
 
 ```
 $ git clone git@github.com:thanhtruong1216/shorten-url-be.git
 ```
-
-## The type of commit messages
-
-- feat: a new feature
-- fix: a bug fix
-- docs: changes to documentation
-- style: formatting, missing semi colons, etc; no code change
-- refactor: refactoring production code
-- test: adding tests, refactoring test; no production code change
-- chore: updating build tasks, package manager configs, etc; no production code change
 
 # SpiderBox Design Ruby on Rails Assessment
 
@@ -97,3 +94,15 @@ curl  --request POST 'http://localhost:3000/links' \
 ```
 
 [x] Bonus point if you test all your code with RSpec.
+
+### Project convention
+
+#### The type of commit messages
+
+- feat: a new feature
+- fix: a bug fix
+- docs: changes to documentation
+- style: formatting, missing semi colons, etc; no code change
+- refactor: refactoring production code
+- test: adding tests, refactoring test; no production code change
+- chore: updating build tasks, package manager configs, etc; no production code change
