@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_151734) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "clicks_count"
+    t.integer "clicks_count", default: 0
     t.index ["user_id"], name: "index_links_on_user_id"
   end
 
