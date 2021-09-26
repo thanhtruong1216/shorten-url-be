@@ -12,7 +12,9 @@ class LinksController < ApplicationController
         id: link.id,
         shorten_url: link.shortener,
         title: link.title,
-        slug: link.slug
+        slug: link.slug,
+        url: link.url,
+        total_clicks: link.clicks_count
       }
 
       links << data
