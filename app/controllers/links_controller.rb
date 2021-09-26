@@ -23,8 +23,7 @@ class LinksController < ApplicationController
     link_with_pagination = Kaminari.paginate_array(links).page(params[:page]).per(page_size)
 
     render json: {
-      result: link_with_pagination,
-      page: current_page
+      result: link_with_pagination
     }
   end
 
@@ -35,7 +34,7 @@ class LinksController < ApplicationController
       result: {
         link: link,
         short_link: link.shortener,
-        total_clicks: link.clicks.count
+        total_clicks: link.clicks_count
       }
     }
   end
@@ -51,7 +50,7 @@ class LinksController < ApplicationController
       }
     else
       render json: {
-        error: shortener_link.errors.full_messages,
+        errors: shortener_link.errors.full_messages,
         status: 422
       }
     end
@@ -67,7 +66,7 @@ class LinksController < ApplicationController
       }
     else
       render json: {
-        error: link.errors.full_messages,
+        errors: link.errors.full_messages,
         status: 422
       }
     end
