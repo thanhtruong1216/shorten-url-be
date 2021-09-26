@@ -26,6 +26,6 @@ class User < ApplicationRecord
             if: -> { new_record? || !password.nil? }
 
   def create_api_key
-    self.api_keys.create!(token: SecureRandom.hex)
+    api_keys.create!
   end
 end
