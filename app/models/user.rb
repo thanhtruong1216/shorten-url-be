@@ -12,7 +12,10 @@
 class User < ApplicationRecord
   include CustomValidators
 
+  after_create :create_api_key
+
   has_many :links
+  has_many :api_keys
 
   has_secure_password
 
@@ -21,4 +24,8 @@ class User < ApplicationRecord
   validates :password,
             length: { minimum: 6 },
             if: -> { new_record? || !password.nil? }
+
+  def create_api_key
+    self.api_keys.create!(token: SecureRandom.hex)
+  end
 end

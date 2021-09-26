@@ -12,6 +12,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  it { is_expected.to have_many(:links) }
+  it { is_expected.to have_many(:api_keys) }
+
   it { is_expected.to validate_presence_of(:email) }
   it { is_expected.to validate_presence_of(:password) }
   it { is_expected.to allow_value('winterfall@gmail.com').for(:email) }
