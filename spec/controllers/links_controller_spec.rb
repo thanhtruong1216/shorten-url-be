@@ -6,7 +6,10 @@ RSpec.describe LinksController, type: :controller do
     let!(:link1) { FactoryBot.create(:link, user: user) }
     let!(:link2) { FactoryBot.create(:link, user: user) }
 
-    before { allow(controller).to receive(:authorize_request) }
+    before do
+      allow(controller).to receive(:authorize_request)
+      allow(controller).to receive(:current_user).and_return(user)
+    end
 
     it 'returns list of links' do
       get :index

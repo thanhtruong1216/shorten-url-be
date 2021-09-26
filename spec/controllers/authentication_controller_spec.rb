@@ -20,7 +20,7 @@ RSpec.describe AuthenticationController, type: :controller do
         post :login, params: { user: { email: Faker::Internet.email, password: user.password } }
 
         expect(response.status).to eq(401)
-        expect(JSON.parse(response.body)['error']).to eq('Unauthorized')
+        expect(JSON.parse(response.body)['errors']).to eq(['Invalid email or password'])
       end
     end
   end
