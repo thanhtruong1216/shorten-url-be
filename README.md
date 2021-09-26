@@ -1,5 +1,9 @@
 # <img src='app/assets/images/studiovinari-brands.svg?raw=true' width="50" height="50"/> Shorten Url Project
 
+## Demo video
+
+[Demo](https://www.loom.com/share/6807c890ae6642158c695c0a93e235ff)
+
 ## Clone project:
 
 ```
@@ -65,7 +69,7 @@ API doc:
 ### List Links
 
 ```bash
-export APIKEY='09c0a1674850a30349136d687f20c85a'
+export APIKEY='4580752365c2f20e9d5e0f272a3c6b78'
 
 curl --request GET 'http://localhost:3000/links' \
      --header "Authorization: Token $APIKEY" | jq .
@@ -74,7 +78,7 @@ curl --request GET 'http://localhost:3000/links' \
 ### With pagination
 
 ```bash
-curl --request GET 'http://localhost:3000/links?page=2' \
+curl --request GET 'http://localhost:3000/links?page=2&page_size=2' \
      --header "Authorization: Token $APIKEY" | jq .
 ```
 
@@ -86,8 +90,8 @@ curl  --request POST 'http://localhost:3000/links' \
       --header 'Content-Type: application/json' \
       --data-raw '{
           "link": {
-            "title": "link new",
-            "url":"https://www.youtube.com/watch?v=HZi4eJXWZU0"
+            "title": "link new 3",
+            "url": "ww.youtube.com/watch?v=HZi4eJXWZU0"
           }
       }' | jq .
 ```
