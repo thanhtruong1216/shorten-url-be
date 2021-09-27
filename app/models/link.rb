@@ -24,7 +24,9 @@ class Link < ApplicationRecord
   validates :slug, uniqueness: true, length: { maximum: 9 }
 
   def shortener
-    "http://localhost:3000/#{slug}" if Rails.env.development?
+    return "https://shortenurlbe.herokuapp.com/#{slug}" if Rails.env.production?
+
+    "http://localhost:3000/#{slug}"
   end
 
   def set_slug

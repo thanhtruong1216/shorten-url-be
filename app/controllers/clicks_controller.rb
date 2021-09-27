@@ -5,7 +5,8 @@ class ClicksController < ApplicationController
     click = Click.new(link: link)
     click.save
 
-    redirect_to 'http://localhost:3001/not_found' and return if link.nil?
+    not_found_url = Rails.env.production? ? 'https://shortenurlbe.herokuapp.com' : 'http://localhost:3001'
+    redirect_to "#{not_found_url}/not_found" and return if link.nil?
 
     redirect_to link.url
   end
