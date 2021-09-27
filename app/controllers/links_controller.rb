@@ -5,7 +5,9 @@ class LinksController < ApplicationController
   before_action :set_link, only: %i[show update destroy]
 
   def index
-    links_with_ordered = current_user.links.order('created_at DESC').page(params[:page]).per(page_size)
+    links_with_ordered = current_user.links
+                                     .order(created_at: :desc, updated_at: :desc)
+                                     .page(params[:page]).per(page_size)
 
     links = links_with_ordered.map do |link|
       {
