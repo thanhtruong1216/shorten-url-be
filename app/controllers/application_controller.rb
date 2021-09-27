@@ -9,8 +9,9 @@ class ApplicationController < ActionController::API
 
     api_key = ApiKey.find_by token: header
 
-    if api_key
+    if api_key.present?
       @current_user = api_key.user
+
       return
     end
 
@@ -29,10 +30,10 @@ class ApplicationController < ActionController::API
   end
 
   def current_page
-    params[:page].presence || 1
+    params.fetch(:page, 1)
   end
 
   def page_size
-    params[:page_size].presence || 5
+    params.fetch(:page_size, 5)
   end
 end

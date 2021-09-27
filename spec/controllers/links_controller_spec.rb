@@ -57,7 +57,10 @@ RSpec.describe LinksController, type: :controller do
     let(:user) { FactoryBot.create(:user) }
     let(:link) { FactoryBot.create(:link, user: user) }
 
-    before { allow(controller).to receive(:authorize_request) }
+    before do
+      allow(controller).to receive(:authorize_request)
+      allow(controller).to receive(:current_user).and_return(user)
+    end
 
     context 'params is valid' do
       it 'update slug' do
@@ -80,12 +83,15 @@ RSpec.describe LinksController, type: :controller do
   end
 
   describe '#DELETE url' do
-    before { allow(controller).to receive(:authorize_request) }
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:link) { FactoryBot.create(:link, user: user) }
+
+    before do
+      allow(controller).to receive(:authorize_request)
+      allow(controller).to receive(:current_user).and_return(user)
+    end
 
     it 'delete an url' do
-      user = FactoryBot.create(:user)
-      link = FactoryBot.create(:link, user: user)
-
       expect do
         delete :destroy, params: { id: link.id }
       end.to change { Link.count }.by(-1)
