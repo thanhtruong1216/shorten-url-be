@@ -17,6 +17,23 @@ Note: You should play at 1.5x speed
 $ git clone git@github.com:thanhtruong1216/shorten-url-be.git
 ```
 
+or
+
+```
+$ git clone https://github.com/thanhtruong1216/shorten-url-be.git
+```
+
+## Run project
+
+```
+$ bundle
+$ rails s
+```
+
+- Go to http://localhost:3001/sign_up to create new account
+- Go to http://localhost:3001/sign_in to log in
+- Go to http://localhost:3001/links to create new link and see your links
+
 # SpiderBox Design Ruby on Rails Assessment
 
 ## 1. THE URL SHORTENER CHALLENGE
