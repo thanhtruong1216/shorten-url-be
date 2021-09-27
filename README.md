@@ -84,29 +84,30 @@ API doc:
 ### List Links
 
 ```bash
-export APIKEY='4580752365c2f20e9d5e0f272a3c6b78'
+export APIKEY='67348f4a3d0479dd6cf6e8eb1e519657'
+export HOST='https://shortenurlbe.herokuapp.com'
 
-curl --request GET 'http://localhost:3000/links' \
+curl --request GET "$HOST/links" \
      --header "Authorization: Token $APIKEY" | jq .
 ```
 
 ### With pagination
 
 ```bash
-curl --request GET 'http://localhost:3000/links?page=2&page_size=2' \
+curl --request GET "$HOST/links?page=2&page_size=2" \
      --header "Authorization: Token $APIKEY" | jq .
 ```
 
 ### Create new Link
 
 ```bash
-curl  --request POST 'http://localhost:3000/links' \
+curl  --request POST "$HOST/links" \
       --header "Authorization: Token $APIKEY" \
       --header 'Content-Type: application/json' \
       --data-raw '{
           "link": {
             "title": "link new 3",
-            "url": "ww.youtube.com/watch?v=HZi4eJXWZU0"
+            "url": "https://www.youtube.com/watch?v=HZi4eJXWZU0"
           }
       }' | jq .
 ```
