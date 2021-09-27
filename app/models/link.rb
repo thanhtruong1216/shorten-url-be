@@ -13,6 +13,7 @@
 #
 class Link < ApplicationRecord
   include CustomValidators
+  include ::ApplicationHelper
 
   belongs_to :user
   has_many :clicks
@@ -24,9 +25,7 @@ class Link < ApplicationRecord
   validates :slug, uniqueness: true, length: { maximum: 9 }
 
   def shortener
-    return "https://shortenurlbe.herokuapp.com/#{slug}" if Rails.env.production?
-
-    "http://localhost:3000/#{slug}"
+    "#{backend_base_url}/#{slug}"
   end
 
   def set_slug
