@@ -18,7 +18,6 @@ RSpec.describe ApplicationController, type: :controller do
   context 'valid Authorization header' do
     it 'returns a 200' do
       request.headers['Authorization'] = 'authorized'
-
       get :show
 
       expect(response).to have_http_status(:ok)
@@ -28,7 +27,6 @@ RSpec.describe ApplicationController, type: :controller do
   context 'invalid Authorization header' do
     it 'returns a 403' do
       request.headers['Authorization'] = 'bar'
-
       get :show
 
       expect(response).to have_http_status(:forbidden)

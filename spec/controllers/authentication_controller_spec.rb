@@ -4,7 +4,7 @@ RSpec.describe AuthenticationController, type: :controller do
   describe '#POST create user' do
     let(:user) { FactoryBot.create(:user) }
 
-    context 'success' do
+    context 'params is valid' do
       it 'returns JWT token' do
         post :login, params: { user: { email: user.email, password: user.password } }
 
@@ -15,7 +15,7 @@ RSpec.describe AuthenticationController, type: :controller do
       end
     end
 
-    context 'failed' do
+    context 'params is invalid' do
       it 'returns error' do
         post :login, params: { user: { email: Faker::Internet.email, password: user.password } }
 

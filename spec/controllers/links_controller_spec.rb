@@ -59,7 +59,7 @@ RSpec.describe LinksController, type: :controller do
 
     before { allow(controller).to receive(:authorize_request) }
 
-    context 'success' do
+    context 'params is valid' do
       it 'update slug' do
         put :update, params: { link: { slug: 'winter' }, id: link.id }
 
@@ -68,7 +68,7 @@ RSpec.describe LinksController, type: :controller do
       end
     end
 
-    context 'failed' do
+    context 'params is invalid' do
       it 'cannot update slug' do
         put :update, params: { link: { slug: '12345678910' }, id: link.id }
 
