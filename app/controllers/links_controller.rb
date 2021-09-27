@@ -4,11 +4,10 @@ class LinksController < ApplicationController
   before_action :authorize_request
 
   def index
-    links = []
-    links_with_ordered = current_user.links.order('created_at DESC')
+    links_with_ordered = current_user.links.order('created_at DESC').page(params[:page]).per(page_size)
 
-    links_with_ordered.each do |link|
-      data = {
+    links = links_with_ordered.map do |link|
+      {
         id: link.id,
         shorten_url: link.shortener,
         title: link.title,
@@ -16,15 +15,11 @@ class LinksController < ApplicationController
         url: link.url,
         total_clicks: link.clicks_count
       }
-
-      links << data
     end
 
-    link_with_pagination = Kaminari.paginate_array(links).page(params[:page]).per(page_size)
-
     render json: {
-      result: link_with_pagination,
-      total: links.count
+      result: links,
+      total: links_with_ordered.count
     }
   end
 
