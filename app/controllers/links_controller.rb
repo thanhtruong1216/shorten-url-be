@@ -19,7 +19,7 @@ class LinksController < ApplicationController
 
     render json: {
       result: links,
-      total: links_with_ordered.count
+      total: current_user.links.count
     }
   end
 
